@@ -4,6 +4,8 @@ Directory contents:
 
 * common.py: some shared definitions.
 
+* demo.py: demo p2psp peer gui
+
 * lossy_peer.py: a peer instantation that deliberately lose chunks of
   data.
 
