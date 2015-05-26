@@ -150,20 +150,20 @@ class GameWindow(Gtk.Window):
     
         
     def _realized(self, widget, data=None):
-        os.putenv('SDL_WINDOWID', str(widget.get_window().get_xid()))        
-        pygame.init()
-        pygame.display.set_mode()
-        self.screen = pygame.display.get_surface()
-        print "Using %s renderer" % pygame.display.get_driver()
+        #os.putenv('SDL_WINDOWID', str(widget.get_window().get_xid()))        
+        #pygame.init()
+        #pygame.display.set_mode()
+        #self.screen = pygame.display.get_surface()
+        #print "Using %s renderer" % pygame.display.get_driver()
         # Create instane of VLC and create reference to movie.
         self.vlcInstance = vlc.Instance()
         self.player = self.vlcInstance.media_player_new()
         self.em = self.player.event_manager()
         self.em.event_attach(vlc.EventType.MediaPlayerTimeChanged,callback, self.player)
-        win_id = pygame.display.get_wm_info()['window']
+        win_id = widget.get_window().get_xid()
         self.player.set_xwindow(win_id)
         self.player.set_mrl('http://localhost:9999')
-        pygame.mixer.quit()
+        #pygame.mixer.quit()
         #self.player.play()   
 
 exitFlag = 0
